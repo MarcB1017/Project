@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MVC_CarsForSale.ViewModels.DashBoard
+@model DashBoardViewModel
+@inject SignInManager<AppUser> SignInManager
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View your bike listing</title>
+
+</head>
+
+
+
+    <div class="album py-5 bg-light">
+
+        <div class="text-center">
+
+            <h1>DASHBOARD</h1>
+        <a type="button" class="btn btn-outline-danger row-cols-sm-2" asp-area="" asp-controller="Dashboard" asp-action="ViewUserProfile">DASHBOARD CONTROL</a>
+        <a type="button" class="btn btn-outline-secondary row-cols-sm-2" asp-area="" asp-controller="Dashboard" asp-action="EditUserProfile">EDIT PROFILE</a>
+        <a type="button" class="btn btn-outline-primary row-cols-sm-2" asp-area="" asp-controller="DashBoard" asp-action="ViewAll">VIEW ALL</a>
+        <a type="button" class="btn btn-outline-primary row-cols-sm-2" asp-area="" asp-controller="DashBoard" asp-action="ViewCars">VIEW CARS</a>
+        <a type="button" class="btn btn-outline-primary row-cols-sm-2" asp-area="" asp-controller="DashBoard" asp-action="ViewBikes">VIEW BIKES</a>
+        <a type="button" class="btn btn-outline-primary row-cols-sm-2" asp-area="" asp-controller="DashBoard" asp-action="ViewVans">VIEW VANS</a>
+
+            <h3>BIKES FOR SALE :</h3>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                @if (Model.Bikes == null || Model.Bikes.Count < 1)
+                {
+                    <h1>Empty List</h1>
+                }
+
+                else
+                {
+
+                    @foreach (var item in Model.Bikes)
+                    {
+                        <div class="col-md-4">
+
+                            <div class="card mb-4 box-shadow">
+
+                                <img class="card-img-top" src="@item.Image"   width="100%" height="225" alt="Card image cap">
+
+                                <div class="card-body">
+                                    <p class="card-text"> @item.BikeBrand @item.BikeModel @item.BikeYear</p>
+                                    <p class="card-text"> @item.Price $</p>
+                                    <p class="card-text"> @item.Milage kms</p>
+
+                                    <div class="text-center">
+
+                                        <div class="btn-group">
+
+                                            <a type="btn btn-success" asp-controller="DashBoard" asp-action="BikeDetails" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">View</a>
+
+                                            @if (SignInManager.IsSignedIn(User))
+                                            {
+                                                <a asp-controller="DashBoard" asp-action="EditUserBikes" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning">Edit</a>
+                                                <a asp-controller="Bikes" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                                            }
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+                }
+            </div>
+
+        </div>
+    </div>

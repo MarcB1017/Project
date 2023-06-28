@@ -1,0 +1,74 @@
+﻿@using MVC_CarsForSale.ViewModels.Users
+@model EditUserViewModel
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit your profile</title>
+
+</head>
+
+<body>
+    <form method="post" asp-action="EditUserProfile" asp-controller="User" enctype="multipart/form-data">
+
+        <div class="album py-5 bg-light">
+
+            <input type="hidden" name="Id" asp-for="Id" />
+
+            <h1>EDIT PROFILE</h1>
+
+            <div class="form-group">
+                <label asp-for="FirstName" style="">First Name</label>
+                <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName">Last Name</label>
+                <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PhoneNumber">Phone Number</label>
+                <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="City">City</label>
+                <input asp-for="City" class="form-control" placeholder="City" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Country">Country</label>
+                <input asp-for="Country" class="form-control" placeholder="Country" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+
+            <label asp-for="Image">Current Profile Image</label>
+            <div class="text-center">
+                <img src="@Model.ProfilePictureUrl" width="400" height="225" alt="Card image cap">
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Image">Select Your New Profile Image</label>
+                <input asp-for="Image" type="file" class="form-control" placeholder="Image" required/>
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <div class="end">
+                <input type="button" value="CANCEL" class="btn btn-outline-danger col-sm-4" onclick="location.href='@Url.Action("Index","User")';" />
+
+                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    <input type="submit" value="UPDATE NOW" class="btn btn-outline-primary col-sm-4" />
+                }
+            </div>
+
+        </div>
+    </form>
+</body>

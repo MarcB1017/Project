@@ -1,0 +1,198 @@
+﻿@using MVC_CarsForSale.ViewModels.DashBoard
+@model EditUserViewModel
+
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard Control</title>
+
+</head>
+
+
+<body>
+    <div class="album py-5 bg-light">
+
+        <div class="container text-center">
+            <h1>DASHBOARD</h1>
+
+            @if (Model.FirstName != null && Model.LastName != null)
+            {         
+                <a type="button" class="btn btn-outline-danger row-cols-sm-2"    asp-area="" asp-controller="Dashboard" asp-action="ViewUserProfile">DASHBOARD CONTROL</a>
+                <a type="button" class="btn btn-outline-secondary row-cols-sm-2" asp-area="" asp-controller="Dashboard" asp-action="EditUserProfile">EDIT PROFILE</a>
+            }
+            else
+            {
+                <span>Please Complete Your Profile Details</span>
+            }
+
+
+            @if (Model.FirstName != null && Model.LastName != null)
+            {
+                <a type="button" class="btn btn-outline-primary row-cols-sm-2"  asp-area="" asp-controller="DashBoard" asp-action="ViewAll">VIEW ALL</a>
+                <a type="button" class="btn btn-outline-primary row-cols-sm-2"  asp-area="" asp-controller="DashBoard" asp-action="ViewCars">VIEW CARS</a>
+                <a type="button" class="btn btn-outline-primary row-cols-sm-2"  asp-area="" asp-controller="DashBoard" asp-action="ViewBikes">VIEW BIKES</a>
+                <a type="button" class="btn btn-outline-primary row-cols-sm-2"  asp-area="" asp-controller="DashBoard" asp-action="ViewVans">VIEW VANS</a>
+            }
+        </div>
+
+        <form method="post" asp-action="ViewUserProfile" asp-controller="DashBoard">
+        
+               <input type="hidden" value="AddressId" id="AddressId" />
+                    <input type="hidden" id="AppUserId" asp-for="Id" value="@Model.Id" />
+
+
+
+                    <div class="col-sm-12">
+
+                        <div class="row">
+                          
+                        <div class="col-sm-4 form-group">
+                         <input asp-for="FirstName" type="hidden" class="form-control"  placeholder="First Name" readonly />
+                        </div>
+
+                        <div class="col-sm-4 form-group">
+                         <input asp-for="LastName"  type="hidden" class="form-control" placeholder="Last Name" readonly />
+                        </div>
+
+                        <div class="col-sm-4 form-group">
+                        <input asp-for="PhoneNumber"  type="hidden" class="form-control"  placeholder="Phone Number" readonly />
+                         </div>
+                                    
+                        </div>
+                      
+                    
+
+                        <div class="row">
+                            <div class="col-sm-4 form-group">
+                            <input asp-for="City"  type="hidden" class="form-control"  placeholder="City" readonly />
+                            </div>
+
+                            <div class="col-sm-4 form-group">
+                           <input asp-for="Country"  type="hidden" class="form-control"  placeholder="Country" readonly />
+                            </div>
+                           
+                        </div>
+
+
+
+              
+                          <h1 class="text-center">DASHBOARD CONTROL</h1>
+                          Welcome @Model?.FirstName.ToUpper() !
+                <p><h3>SELL BY CATEGORY :</h3></p>
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                    <div class="col">
+                        <div class="card shadow-sm">
+
+                            <img src="https://purepng.com/public/uploads/large/purepng.com-yellow-audi-caraudicars-961524670899johme.png" class="d-block w-100" />
+
+                            <div class="text-center card-body">
+                                <a type="button" class="btn btn-outline-danger col-sm-9"  asp-area="" asp-controller="Cars" asp-action="Create">SELL YOUR CAR NOW</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+
+                        <div class="card shadow-sm" style="">
+
+                            <img src="https://www.pngall.com/wp-content/uploads/2/Sports-Bike-PNG-Free-Download.png" class="d-block w-100"/>
+
+                            <div class="text-center card-body">
+                                <a type="button" class="btn btn-outline-danger col-sm-9"  asp-area="" asp-controller="Bikes" asp-action="Create">SELL YOUR BIKE NOW</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+
+                        <div class="card shadow-sm">
+
+                            <img src="http://st.automobilemag.com/uploads/sites/10/2016/09/2016-mercedes-benz-sprinter-2500-144-wb-high-roof-cargo-van-angular-front.png" class="d-block w-100" />
+
+                            <div class="text-center card-body">
+
+
+                                <a type="button" class="btn btn-outline-danger col-sm-9" asp-area="" asp-controller="Vans" asp-action="Create">SELL YOUR VAN NOW</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                                     <hr/>
+
+              
+                                <p><h3>VIEW YOUR CURRENT LISTING :</h3></p>
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4" style="padding-top:1%;">
+
+                    <div class="col">
+                        <div class="card shadow-sm">
+
+                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8XnKet23hMyJ4Bhjuk7-OwAAAA%26pid%3DApi&f=1&ipt=5f7b2a4ec7b342fb3c8d7be123a5bb0a14c1c19001bed6e74dabc7273651202e&ipo=images" class="d-block w-100"/>
+
+                            <div class="card-body text-center">
+                                <a type="button" class="btn btn-outline-danger col-sm-6"  asp-area="" asp-controller="DashBoard" asp-action="ViewAll">VIEW ALL</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        
+                        <div class="card shadow-sm">
+
+                            <img src="https://purepng.com/public/uploads/large/purepng.com-yellow-audi-caraudicars-961524670899johme.png" class="d-block w-100" />
+
+                            <div class="card-body text-center">
+                                <a type="button" class="btn btn-outline-danger col-sm-6"  asp-area="" asp-controller="DashBoard" asp-action="ViewCars">VIEW CARS</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                       
+                        <div class="card shadow-sm">
+
+                            <img src="https://www.pngall.com/wp-content/uploads/2/Sports-Bike-PNG-Free-Download.png" class="d-block w-100" />
+
+                            <div class="card-body text-center">
+
+
+                                <a type="button" class="btn btn-outline-danger col-sm-6"  asp-area="" asp-controller="DashBoard" asp-action="ViewBikes">VIEW BIKES</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col">
+
+                        <div class="card shadow-sm">
+
+                            <img src="http://st.automobilemag.com/uploads/sites/10/2016/09/2016-mercedes-benz-sprinter-2500-144-wb-high-roof-cargo-van-angular-front.png" class="d-block w-100"  />
+
+                            <div class="card-body text-center">
+
+
+                                <a type="button" class="btn btn-outline-danger col-sm-6"  asp-area="" asp-controller="DashBoard" asp-action="ViewVans">VIEW VANS</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <hr/>
+
+
+
+            </div>               
+            </form>
+            </div>
+            
+</body>

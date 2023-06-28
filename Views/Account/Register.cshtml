@@ -1,0 +1,65 @@
+﻿@using MVC_CarsForSale.ViewModels.Account
+@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Sign up";
+}
+
+
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+</head>
+
+<body>
+    <div class="bg-white" style="margin-top:14%;">
+
+    <div class="about-section">
+         
+        <img src="https://www.cavgc.in/wp-content/uploads/2020/03/RegisterIcon.png"/>
+        
+        <div class="inner-container">
+
+            <h4>Sign up for a new account</h4>
+
+            <form asp-action="Register" asp-controller="Account" method="post">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="EmailAddress" class="control-label"></label>
+                    <input asp-for="EmailAddress" class="form-control" />
+                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input class="btn btn-outline-primary float-right col-sm-5" type="submit" value="SIGN UP" />
+                    <a class="btn btn-outline-danger col-sm-5" asp-controller="Home" asp-action="Index">CANCEL</a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    </div>
+</body>
+</html>

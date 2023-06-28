@@ -1,0 +1,86 @@
+﻿
+@model Vans
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Van Details</title>
+
+</head>
+
+<body>
+    <div class="album py-5 bg-light">
+        <form method="get" asp-action="Details" asp-controller="Vans">
+            <div class="container">
+
+                <h1 class="my-4">Van Detail </h1>
+                <div class="row">
+                    <div class="text-center"><img class="img-fluid" src="@Model.Image" alt=""></div>
+                </div>
+            </div>
+
+            <div class="container bootstrap snippets bootdey">
+                <div class="row">
+
+                    <input type="hidden" id="AppUserId" asp-for="AppUserId" value="@Model.AppUserId" />
+                    <input type="hidden" id="AddressId" asp-for="AddressId" value="@Model.AddressId" />
+
+
+                    <div class="profile-nav col-md-3">
+                        <div class="panel">
+
+
+                            <h3>@Model.VanBrand @Model.VanModel @Model.VanYear</h3>
+                            <p>@Model.Address.City , @Model.Address.Country</p>
+
+
+                        </div>
+                    </div>
+                    <div class="profile-info col-md-9">
+
+                        <div class="panel">
+
+                            <div class="panel-body bio-graph-info">
+                                <div class="row">
+                                    <div class="bio-row">
+                                        <p><span>Price </span>:@Model.Price $</p>
+                                    </div>
+
+                                    <div class="bio-row">
+                                        <p><span>Name </span>: @Model.AppUser?.FirstName @Model.AppUser?.LastName</p>
+                                    </div>
+
+                                    <div class="bio-row">
+                                        <p><span>Milage </span>: @Model.Milage Kms</p>
+                                    </div>
+
+                                    <div class="bio-row">
+                                        <p><span>Phone : </span>: @Model.AppUser?.PhoneNumber</p>
+                                    </div>
+                                    <div class="bio-row">
+                                        <p><span>Description </span>: @Model.Description</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                     
+
+                    </div>
+                    <div class="end">
+                        <input type="button" value="BACK" class="btn btn-outline-primary col-sm-4" onclick="location.href='@Url.Action("Index","Vans")';" />
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </form>
+    </div>
+
+</body>

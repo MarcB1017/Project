@@ -1,0 +1,162 @@
+﻿@using MVC_CarsForSale.ViewModels.Search
+
+@model List<Cars>
+
+@{
+    SPager pager = new SPager();
+
+    int pageNo = 0;
+    if (ViewBag.SearchPager != null)
+    {
+        pager = ViewBag.SearchPager;
+        pageNo = pager.CurrentPage;
+    }
+
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <script src="~/js/search.js"></script>
+
+</head>
+
+<section class="jumbotron text-center bg-warning">
+
+    <div class="container"><h1 class="jumbotron-heading"> CARS AVAILABLE NOW</h1></div>
+
+</section>
+
+<input type="button"  value="Open/Close Search Menu" class="btn btn-danger" onclick="OpenSeachBar()" />
+
+<div id="SearchMenu">
+
+    <form asp-controller="Search" asp-action="GetAllCarsByCity">
+
+        <input class="form-control" type="text"  name="SearchText" placeholder="Search By City" />
+        <input class="form-control btn-outline-info" type="submit" value="Search" />
+
+    </form>
+
+    <form asp-controller="Search" asp-action="GetAllCarsByBrand">
+
+        <input class="form-control" type="text"  name="SearchText" placeholder="Search By Brand" />
+        <input class="form-control btn-outline-info" type="submit" value="Search" />
+
+    </form>
+
+    <form asp-controller="Search" asp-action="GetAllCarsByPrice">
+
+        <input class="form-control" type="text"  name="SearchText" placeholder="Search By Price" />
+        <input class="form-control btn-outline-info" type="submit" value="Search" />
+
+    </form>
+
+    <form asp-controller="Search" asp-action="GetAllCarsByYear">
+
+        <input class="form-control" type="text"  name="SearchText" placeholder="Search By Year" />
+        <input class="form-control btn-outline-info" type="submit" value="Search" />
+
+    </form>
+
+    <vc:search-bar search-pager="@ViewBag.SearchPager"></vc:search-bar>
+
+</div>
+
+<div class="album py-5 bg-light">
+
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            @if (Model.Count < 1)
+            {
+                <h1>Sorry!, No result</h1>
+            }
+
+            else
+            {
+
+                @foreach (var item in Model)
+                {
+
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img class="card-img-top" src="@item.Image" width="100%" height="225" alt="Card image cap">
+
+                            <div class="card-body">
+                                <p class="card-text"> @item.CarBrand @item.CarModel @item.CarYear</p>
+                                <p class="card-text"> @item.Price $</p>
+                                <p class="card-text"> @item.Milage kms</p>
+
+                                <div class="text-center">
+                                    <div class="btn-group">
+
+                                        @if(!User.Identity.IsAuthenticated)
+                                        {
+                                            <a asp-controller="Cars" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info col-sm-4">VIEW NOW</a>
+                                        }
+
+                                        @if(User.Identity.IsAuthenticated && User.IsInRole("user"))
+                                        {
+                                            <a asp-controller="Cars" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info col-sm-4">VIEW NOW</a>
+                                        }
+
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                                        {
+                                            <a asp-controller="Cars" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">View</a>
+                                            <a asp-controller="DashBoard" asp-action="EditUserCars" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning">Edit</a>
+                                            <a asp-controller="Cars" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    @*Pager*@
+    <div class="container">
+
+        @if (pager.TotalPages > 0)
+        {
+            <ul class="pagination justify-content-end">
+                @if (pager.CurrentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="Search" asp-action="GetAllCarsByPrice" asp-route-pg="1">First</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="Search" asp-action="GetAllCarsByPrice" asp-route-pg="@(pager.CurrentPage -1)">Previous</a>
+                    </li>
+                }
+
+                @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+                {
+                    <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                        <a class="page-link" asp-controller="Search" asp-action="GetAllCarsByPrice" asp-route-pg="@pge">@pge</a>
+                    </li>
+                }
+
+                @if (pager.CurrentPage < pager.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="Search" asp-action="GetAllCarsByPrice" asp-route-pg="@(pager.CurrentPage -1)">Next</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="Search" asp-action="GetAllCarsByPrice" asp-route-pg="@(pager.TotalPages)">Last</a>
+                    </li>
+                }
+
+            </ul>
+        }
+
+    </div>
+
+</div>

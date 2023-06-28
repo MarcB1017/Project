@@ -1,0 +1,154 @@
+﻿@using MVC_CarsForSale.ViewModels.DashBoard
+@model EditUserViewModel
+
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit user profile</title>
+
+</head>
+
+<body>
+
+    <div class="album py-5 bg-light">
+
+        <div class="container text-center">
+
+            <h1 class="display-4 fw-normal">DASHBOARD</h1>
+         
+            @if(Model.FirstName != null && Model.LastName != null)
+            {
+                <a type="button" class="btn btn-outline-danger row-cols-sm-2"  asp-area="" asp-controller="Dashboard" asp-action="ViewUserProfile">DASHBOARD CONTROL</a>
+                <a type="button" class="btn btn-outline-secondary row-cols-sm-2" asp-area="" asp-controller="Dashboard" asp-action="EditUserProfile">EDIT PROFILE</a>
+            }else
+            {
+                <span>Please complete your profile Details.</span>
+            }
+
+          
+
+            @if (Model.FirstName != null && Model.LastName != null)
+            {
+                <a type="button" class="btn btn-outline-primary row-cols-sm-2" asp-area="" asp-controller="DashBoard" asp-action="ViewAll">VIEW ALL</a>
+                <a type="button" class="btn btn-outline-primary row-cols-sm-2" asp-area="" asp-controller="DashBoard" asp-action="ViewCars">VIEW CARS</a>
+                <a type="button" class="btn btn-outline-primary row-cols-sm-2" asp-area="" asp-controller="DashBoard" asp-action="ViewBikes">VIEW BIKES</a>
+                <a type="button" class="btn btn-outline-primary row-cols-sm-2" asp-area="" asp-controller="DashBoard" asp-action="ViewVans">VIEW VANS</a>
+            }
+
+        </div>
+
+ 
+    <div class="container">
+            <h1 class="well" id="1">EDIT PROFILE</h1>
+        <div class="col-lg-12 well">
+            <div class="row">
+                <form method="post" asp-action="EditUserProfile" asp-controller="DashBoard" enctype="multipart/form-data">
+
+                    <input type="hidden" id="Id" asp-for="Id" value="@Model.Id" />
+
+                    <div class="col-sm-12">
+
+
+                        <div class="form-group2">
+                                <label asp-for="Image">Current Profile Image</label>
+                        </div>
+
+                        <div class="form-group2">
+                            <img src="@Model.ProfilePictureUrl" width="400" height="225" alt="Card image cap">
+                        </div>
+
+                        <div class="form-group2">
+                                <label asp-for="Image">Select Your New Profile Image</label>
+                            <input asp-for="Image" type="file" class="form-control"  placeholder="Image"  required/>
+                            <span asp-validation-for="Image" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                    <label asp-for="FirstName">First Name</label>
+                                <input asp-for="FirstName" class="form-control"  placeholder="First Name" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                    <label asp-for="LastName">Last Name</label>
+                                <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    
+                        <div class="row">
+
+                            <div class="col-sm-4 form-group">
+                                    <label asp-for="City">City</label>
+                                <input asp-for="City" class="form-control"  placeholder="City" />
+                                <span asp-validation-for="City" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-sm-4 form-group">
+                                    <label asp-for="Country">Country</label>
+                                <input asp-for="Country" class="form-control"  placeholder="Country" />
+                                <span asp-validation-for="Country" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-sm-4 form-group">
+                                    <label asp-for="PhoneNumber">Phone Number</label>
+                                <input asp-for="PhoneNumber" class="form-control"  placeholder="Phone Number" />
+                                <span  asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="end">
+                            <input type="button" value="CANCEL" class="btn btn-outline-danger col-sm-4" onclick="location.href='@Url.Action("Index","DashBoard")';" />
+
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                            {
+                                <input type="submit" value="UPDATE NOW" class="btn btn-outline-primary col-sm-4" />
+                            }
+
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+                            {
+                                <input type="submit" value="UPDATE NOW" class="btn btn-outline-primary col-sm-4" />
+
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>

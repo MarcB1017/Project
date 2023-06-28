@@ -1,0 +1,52 @@
+﻿@using MVC_CarsForSale.ViewModels.Users
+@model UserDetailsViewModel
+
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <section class="bg-white">
+
+            <div class="container">
+
+                <div class="text-center">
+
+                    <div>
+                        <div class="media">
+                            <h1>Profile Details</h1>
+                            <img alt="Image" src="@Model.ProfilePictureUrl" class="mr-md-5 avatar avatar-xlg">
+
+                            <div class="media-body">
+
+                                <div><h1 class="h2 mb-2">@Model.UserName</h1><span class="text-muted"><i class="icon-location"></i>@Model.Location</span></div>
+
+                                <p class="text-muted">First Name: @Model.FirstName</p>
+                                <p class="text-muted">Last Name: @Model.LastName</p>
+                                <p class="text-muted">Phone Number:@Model.PhoneNumber</p>
+
+                                <div class="end"><input type="button" value="BACK" class="btn btn-outline-primary col-sm-8" onclick="location.href='@Url.Action("Index","User")';" /></div>
+                  
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+</body>
+
+
+

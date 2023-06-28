@@ -1,0 +1,81 @@
+﻿@using MVC_CarsForSale.ViewModels.DashBoard
+@model EditUserViewModel
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index of DashBoard</title>
+
+</head>
+
+
+
+<div class="album py-5 bg-light">
+
+    <div class="container text-center">
+
+        <h1 class="display-4 fw-normal">DASHBOARD</h1>
+
+      
+
+
+     @if(Model.FirstName != null || Model.LastName !=null)
+     {
+ 
+     }
+     else
+     {
+         <span>Please go to "Edit User Profile" to complete your registration.</span>
+     }
+
+
+        <a type="button" class="btn btn-outline-danger row-cols-sm-2"  asp-area="" asp-controller="Dashboard" asp-action="ViewUserProfile">DASHBOARD CONTROL</a>
+        <a type="button" class="btn btn-outline-secondary row-cols-sm-2" asp-area="" asp-controller="Dashboard" asp-action="EditUserProfile">EDIT PROFILE</a>
+        <a type="button" class="btn btn-outline-primary row-cols-sm-2"  asp-area="" asp-controller="DashBoard" asp-action="ViewAll">VIEW ALL</a>
+        <a type="button" class="btn btn-outline-primary row-cols-sm-2"  asp-area="" asp-controller="DashBoard" asp-action="ViewCars">VIEW CARS</a>
+        <a type="button" class="btn btn-outline-primary row-cols-sm-2"  asp-area="" asp-controller="DashBoard" asp-action="ViewBikes">VIEW BIKES</a>
+        <a type="button" class="btn btn-outline-primary row-cols-sm-2"  asp-area="" asp-controller="DashBoard" asp-action="ViewVans">VIEW VANS</a>
+
+    </div>
+
+    <form method="get" asp-controller="DashBoard" asp-action="Index">
+
+        
+
+        <body>
+
+            <div class="container">
+
+                <section class="bg-white">
+
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="FirstName" />
+                    <input type="hidden" asp-for="LastName" />
+                    <input type="hidden" asp-for="PhoneNumber" />
+                    <input type="hidden" asp-for="City" />
+                    <input type="hidden" asp-for="Country" />
+                    
+                    <div class="container">
+
+                        <div class="row justify-content-center">
+
+                            <div class="text-center">
+
+                                <img src="~/Image/DashBoard/meter1.png"/>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>            
+
+        </body>
+
+    </form>
+</div>
+

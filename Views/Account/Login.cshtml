@@ -1,0 +1,65 @@
+﻿@using MVC_CarsForSale.ViewModels.Account
+@model LoginViewModel
+
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+   
+</head>
+
+<body>
+
+    <div class="bg-white">
+
+    <div class="about-section">
+
+        <img src="https://www.logolynx.com/images/logolynx/15/1588b3eef9f1607d259c3f334b85ffd1.png"/>
+         
+        <div class="inner-container">
+
+            <h4>Log in to your account</h4>
+
+            <form asp-action="Login" asp-controller="Account" method="post">
+
+             @if(Model.Password == ""){<span>Please enter your password</span>}
+             
+          
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="EmailAddress" class="control-label"></label>
+                    <input asp-for="EmailAddress" class="form-control" />
+                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input class="btn btn-outline-primary float right col-md-9 d-inline" type="submit" value="LOG IN" />
+                    <input type="button" value="CANCEL" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Index","Home")';" />
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    </div>
+</body>
+</html>

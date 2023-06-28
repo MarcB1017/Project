@@ -1,0 +1,123 @@
+﻿@using MVC_CarsForSale.Models
+@model Cars
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are you sure you want to delete this ?</title>
+
+</head>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="col-lg-12 well">
+            <div class="row">
+                <form method="post" asp-action="Delete" enctype="multipart/form-data">
+
+                    <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />
+                    <input type="hidden" value="AddressId" id="AddressId" />
+
+                    <h1>Are You Sure You Want To Delete This Car ?</h1>
+
+
+                    <div class="form-group2">
+                        <img src="@Model.Image" />
+                        <span asp-validation-for="Image" type="file " class="text-danger"></span>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="row">
+
+                                <div class="col-sm-4 form-group">
+                                    <label asp-for="CarBrand">CarBrand</label>
+                                    <input asp-for="CarBrand" class="form-control" placeholder="CarBrand" readonly>
+                                    <span asp-validation-for="CarBrand" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-sm-4 form-group">
+                                    <label asp-for="CarModel">CarModel</label>
+                                    <input asp-for="CarModel" class="form-control" placeholder="CarModel" readonly>
+                                    <span asp-validation-for="CarModel" class="text-danger"></span>
+                                </div>
+                                <div class="col-sm-4 form-group">
+                                    <label asp-for="CarYear">CarYear</label>
+                                    <input asp-for="CarYear" class="form-control" placeholder="CarYear" readonly>
+                                    <span asp-validation-for="CarYear" class="text-danger"></span>
+                                </div>
+                            
+
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Description">Description</label>
+                            <input asp-for="Description" class="form-control" placeholder="Description" readonly>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 form-group">
+                                <label asp-for="Address.City">City</label>
+                                <input asp-for="Address.City" class="form-control" placeholder="City" readonly>
+                                <span asp-validation-for="Address.City" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-4 form-group">
+                                <label asp-for="Address.Province">Province</label>
+                                <input asp-for="Address.Province" class="form-control" placeholder="Province" readonly>
+                                <span asp-validation-for="Address.Province" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-4 form-group">
+                                <label asp-for="Address.Country">Country</label>
+                                <input asp-for="Address.Country" class="form-control" placeholder="Country" readonly>
+                                <span asp-validation-for="Address.Country" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label asp-for="Price">Price</label>
+                                <input asp-for="Price" class="form-control" placeholder="Price" readonly/>
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                <label asp-for="Milage">Milage</label>
+                                <input asp-for="Milage" class="form-control" placeholder="Milage" readonly/>
+                                <span asp-validation-for="Milage" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+
+        <form action="Delete" method="post">
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="end">
+                <input type="button" value="CANCEL" class="btn btn-outline-danger col-sm-4" onclick="location.href='@Url.Action("ViewCars","DashBoard")';" />
+
+                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    <input type="submit" value="DELETE NOW" class="btn btn-outline-primary col-sm-4" />
+                }
+
+                @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+                {
+                    <input type="submit" value="DELETE NOW" class="btn btn-outline-primary col-sm-4" />
+
+                }
+
+            </div>
+
+        </form>
+    </div>
+
+</div>
+</div>
