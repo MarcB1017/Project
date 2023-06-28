@@ -1,5 +1,19 @@
 #MvcCarsForSale Asp.Net C# Project
 
+Microsoft Visual Studio 2022
+
+NuGet Packages :
+
+Bootstrap v5.2.3
+CloudinaryDotNet ( Cloud storage of pictures) v1.21.0
+Microsoft.AspNetCore.Identity.EntityFrameworkCore v6.0.9
+Microsoft.EntityFrameworkCore v7.0.5
+Microsoft.EntityFrameWorkCore.Design v7.0.5
+Microsoft.EntityFrameworkCore.SqlServer v7.0.5
+Microsoft.EntityFrameworkCore.Tools v7.0.5
+
+
+
 Problem: Non-Registered Member can access Cars, Vans, Bikes Page.
 Solution: Authorize (UserInRole(“Admin”) +” ”+ UserInRole(“User”)
 
