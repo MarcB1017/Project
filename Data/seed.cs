@@ -27,7 +27,7 @@ namespace MVC_CarsForSale.Data
 //                                                    AddressId = 5,
 //                                                    Address = new Address()
 //                                                    {
-//                                                        Street = "174 Rue Despeupliers",
+//                                                        Province = "Quebec",
 //                                                        City = "St-Donat",
 //                                                        Country = "Canada"
 //                                                    }
@@ -41,7 +41,7 @@ namespace MVC_CarsForSale.Data
 //                                                    AddressId = 5,
 //                                                    Address = new Address()
 //                                                    {
-//                                                        Street = "174 Rue Despeupliers",
+//                                                        Province = "Quebec",
 //                                                        City = "St-Donat",
 //                                                        Country = "Canada"
 //                                                    }
@@ -56,7 +56,7 @@ namespace MVC_CarsForSale.Data
 //                                                    AddressId = 5,
 //                                                    Address = new Address()
 //                                                    {
-//                                                        Street = "174 Rue Despeupliers",
+//                                                        Province = "Quebec",
 //                                                        City = "St-Donat",
 //                                                        Country = "Canada"
 //                                                    }
@@ -70,7 +70,7 @@ namespace MVC_CarsForSale.Data
 //                                                    AddressId = 5,
 //                                                    Address = new Address()
 //                                                    {
-//                                                        Street = "174 Rue Despeupliers",
+//                                                        Province = "Quebec",
 //                                                        City = "St-Donat",
 //                                                        Country = "Canada"
 //                                                    }
@@ -92,7 +92,7 @@ namespace MVC_CarsForSale.Data
 //                                                    AddressId = 5,
 //                                                    Address = new Address()
 //                                                    {
-//                                                        Street = "174 Rue Despeupliers",
+//                                                        Province = "Quebec",
 //                                                        City = "St-Donat",
 //                                                        Country = "Canada"
 //                                                    }
@@ -106,7 +106,7 @@ namespace MVC_CarsForSale.Data
 //                                                  AddressId = 5,
 //                                                  Address = new Address()
 //                                                  {
-//                                                      Street = "174 Rue Despeupliers",
+//                                                      Province = "Quebec",
 //                                                      City = "St-Donat",
 //                                                      Country = "Canada"
 //                                                  }
@@ -130,7 +130,7 @@ namespace MVC_CarsForSale.Data
 //                                                  AddressId = 5,
 //                                                  Address = new Address()
 //                                                  {
-//                                                      Street = "174 Rue Despeupliers",
+//                                                      Province = "Quebec",
 //                                                      City = "St-Donat",
 //                                                      Country = "Canada"
 //                                                  }
@@ -144,7 +144,7 @@ namespace MVC_CarsForSale.Data
 //                                                  AddressId = 5,
 //                                                  Address = new Address()
 //                                                  {
-//                                                      Street = "174 Rue Despeupliers",
+//                                                      Province = "Quebec",
 //                                                      City = "St-Donat",
 //                                                      Country = "Canada"
 //                                                  }
@@ -184,7 +184,7 @@ public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationB
                 EmailConfirmed = true,
                 Address = new Address()
                 {
-                    Province = "123 Main St",
+                    Province = "Quebec",
                     City = "Montreal",
                     Country = "Canada"
                 }
@@ -207,7 +207,7 @@ public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationB
                 EmailConfirmed = true,
                 Address = new Address()
                 {
-                    Province = "153 17th Avenue",
+                    Province = "Quebec",
                     City = "Quebec",
                     Country = "Canada"
                 }
