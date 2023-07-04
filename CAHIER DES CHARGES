@@ -10,15 +10,15 @@ La compagnie « CarsForSale » a besoin d’un système leur permettant de vendr
 Spécifications applicatives :
 Puisqu’il devra être utilisé à la fois par un administrateur, des utilisateurs et des membres, le système devra offrir des fonctionnalités administratives, des fonctionnalités pour les utilisateurs et des fonctionnalités pour les membres. 
 
-1	Fonctionnalités administratives.
+1.   Fonctionnalités administratives.
 1-	Un administrateur a tous les droits. Il peut supprimer n’importe quelle annonce ou     utilisateur de la plateforme.
 
-2	Fonctionnalités pour les utilisateurs.
-1-   Peut consulter les annonces sans être membre.
+2.  Fonctionnalités pour les utilisateurs.
+1-      Peut consulter les annonces sans être membre.
 2-	Ne peux pas accéder à la page admin et au tableau de bord.
 3-	Ne peut pas vendre ou modifier une annonce. 
 	
-3   Fonctionnalités pour les membres. 
+3.   Fonctionnalités pour les membres. 
 1-	Doit être membre pour accéder au tableau de bord.
 2-	Doit compléter son profil pour accéder au tableau de bord complet.
 3-	Doit être membre pour vendre, modifier ou supprimer une annonce.
@@ -27,12 +27,12 @@ Puisqu’il devra être utilisé à la fois par un administrateur, des utilisate
 6-	Doit utiliser une adresse courriel valide contenant un @ et un point (.) suivi de minimum 2 lettres.
 7-	Seulement une inscription est permise par adresse courriel. 
 
-4	Fonctionnalités globales :
+4.	Fonctionnalités globales :
 
 1)	Afficher les voitures disponibles à proximité du lieu de la personne connectée sur la plateforme.
 
 
-5 Structure minimale de l’application :
+5. Structure minimale de l’application :
 
 Modèle :
 1-	AppUser, contenant les champs Id, prénom, nom de famille, numéro de téléphone, photo, FK Address, Liste/Collection voitures, motos et mini-fourgonnettes.
@@ -40,6 +40,7 @@ Modèle :
 3-	Bikes contenant les champs Id, prix, kilométrage, marque, modèle, année, description et image.
 4-	Cars, contenant les champs Id, prix, kilométrage, marque, modèle, année, description et image.
 5-	Vans, contenant les champs Id, prix, kilométrage, marque, modèle, année, description et image.
+
 Vues :
 Home/Index, Page d’accueil.
 Account/Register, Permet d’afficher la page d’inscription.
@@ -65,6 +66,7 @@ User/Index, permet d’afficher la liste des membres de la plateforme.
 User/Edit, permet de modifier le profil des membres.
 User/Delete, permet de supprimer le profil des membres.
 
+
 Contrôleur:
 1-	AccountController, permet aux utilisateurs de devenir membre et de se connecter.
 2-	BikesController, permet aux membres de vendre et de voir leurs motos.
@@ -74,8 +76,6 @@ Contrôleur:
 6-	DashBoardController, permet de modifier ou supprimer le profil et les annonces du membre connecté.
 7-	UserController, permet à l’administrateur de voir la liste des membres de la plateforme.
 8-	SearchController, permets à tous de faire des recherches sur la plateforme.
-
-
 
 
 Interface/Référentiel (Repository):
