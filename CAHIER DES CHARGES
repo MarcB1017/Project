@@ -3,7 +3,7 @@ CAHIER DES CHARGES
 
 But :
 Dans ce projet personnel, j’ai décidé de mettre en pratique mes compétences acquises lors de mon parcours collégial. J’ai réalisé ce projet avec Visual Studio 2022 en utilisant le patron de conception modèle,
-vue et contrôleur (MVC) en Asp.Net C#, à l’aide des technologies suivantes : EntityFrameworkCore, Identity, SqlExpress, SqlServer, Cloudinary, Bootstrap.
+vue et contrôleur (MVC/MVVM) en Asp.Net C#, à l’aide des technologies suivantes : EntityFrameworkCore, Identity, SqlExpress, SqlServer, Cloudinary, Bootstrap.
 
 Mise en situation :
 La compagnie « CarsForSale » a besoin d’un système leur permettant de vendre des voitures, des motos et des mini-fourgonnettes en ligne. Cette compagnie veut permettre à ceux qui désirent de placer une annonce en ligne pour les membres.
